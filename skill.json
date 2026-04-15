@@ -1,0 +1,77 @@
+{
+  "slug": "socialepoch-whatsapp-scrm",
+  "name": "SocialEpoch - WhatsApp SCRM API",
+  "version": "2.1.3",
+  "author": "SocialEpoch",
+  "description": "Officially integrated with SocialEpoch WhatsApp SCRM OpenAPI. Support one-on-one & bulk messaging, including text, image, audio, document, video, business card, link card and diversion link. Built-in dependency management and automatic environment configuration for global customer service & overseas marketing scenarios.",
+  "category": "Marketing/Customer Service/Overseas/AI Tools",
+  "tags": [
+    "socialepoch",
+    "whatsapp",
+    "wa",
+    "scrm",
+    "customer-management",
+    "bulk-sending",
+    "message-push",
+    "marketing",
+    "customer-service",
+    "overseas",
+    "global",
+    "link-card",
+    "media-message"
+  ],
+  "icon": "📱",
+  "permissions": ["network", "config"],
+  "configSchema": {
+    "SOCIALEPOCH_TENANT_ID": {
+      "type": "string",
+      "label": "Tenant ID",
+      "required": true,
+      "placeholder": "Enter your SocialEpoch Tenant ID"
+    },
+    "SOCIALEPOCH_API_KEY": {
+      "type": "string",
+      "label": "API Key",
+      "required": true,
+      "secret": true,
+      "placeholder": "Enter your SocialEpoch API Key"
+    },
+    "mediaTips": {
+      "type": "string",
+      "label": "Media Usage Instructions",
+      "required": false,
+      "default": "All media files require public accessible URLs; Use English comma to separate multiple phone numbers for bulk sending.",
+      "readonly": true
+    }
+  },
+  "triggers": [
+    "Query online accounts",
+    "Send text message",
+    "Send image",
+    "Send audio",
+    "Send document",
+    "Send video",
+    "Send business card",
+    "Send link card",
+    "Send diversion link",
+    "Query task status",
+    "Bulk text sending",
+    "Bulk image sending",
+    "Bulk audio sending",
+    "Bulk document sending",
+    "Bulk video sending",
+    "Bulk link card sending",
+    "SocialEpoch",
+    "WhatsApp customer service",
+    "WhatsApp bulk message"
+  ],
+  "metadata": {
+    "requires": {
+      "config": ["SOCIALEPOCH_TENANT_ID", "SOCIALEPOCH_API_KEY"]
+    }
+  },
+  "autoLoad": true,
+  "docAutoImport": true,
+  "always": false,
+  "privacy": "none"
+}
