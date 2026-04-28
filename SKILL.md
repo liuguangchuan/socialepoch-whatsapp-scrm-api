@@ -1,7 +1,7 @@
 ---
 name: socialepoch-whatsapp-scrm
-description: Officially integrated with SocialEpoch global WhatsApp SCRM open API, tailored for enterprise overseas marketing and customer service scenarios. Full coverage of WhatsApp account management, online agent query, customer operation, user profiling, chat record retrieval and Webhook callback. Supports one-on-one & bulk messaging for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
-version: 2.1.3
+description: SocialEpoch WhatsApp SCRM open API, tailored for enterprise overseas marketing and customer service scenarios. Full coverage of WhatsApp account management, bulk sending,online agent query, customer operation, user profiling, chat record retrieval and Webhook callback. Supports one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
+version: 2.1.8
 author: SocialEpoch
 metadata:
   emoji: 📱
@@ -10,7 +10,7 @@ metadata:
   openclaw:
     requires:
       bins: ["python3"]
-      env: ["SOCIALEPOCH_TENANT_ID", "SOCIALEPOCH_API_KEY"]
+      env: ["SOCIALEPOCH_TENANT_ID", "SOCIALEPOCH_API_KEY", "SOCIALEPOCH_SOURCE"]
     primaryEnv: SOCIALEPOCH_API_KEY
     install:
       - id: python-brew
@@ -22,6 +22,7 @@ metadata:
       command: "${PYTHON}"
       args:
         - "scrm_api.py"
+      workingDir: "${SKILL_ROOT}"
       python: true
       auto_bootstrap: true
       auto_install_python: true
@@ -36,23 +37,38 @@ Comprehensive management for WhatsApp service accounts. Support one-on-one and b
 - 🔧 Dual configuration: Environment variables & local config file
 - ✅ Strict validation: Format, non-empty and type checking for all parameters
 - 📊 Structured output: Standardized JSON response for all results
+- 🚀 Send source support: PC(1), Mobile(2), Cloud(3), default to PC(1)
+
+## Send Source Description
+- 1 = PC (Default)
+- 2 = Mobile
+- 3 = Cloud
 
 ## Configuration Methods (Choose One)
 ### Method 1: Environment Variables (Recommended)
 ```bash
 export SOCIALEPOCH_TENANT_ID="Your Tenant ID"
 export SOCIALEPOCH_API_KEY="Your API Key"
+export SOCIALEPOCH_SOURCE="1"  # 1=PC,2=Mobile,3=Cloud
 ```
 
 ### Method 2: Command Line Configuration
 ```bash
+# Default source = 1 (PC)
 python3 scrm_api.py set_config Your_Tenant_ID Your_API_Key
+
+# Custom source (1=PC,2=Mobile,3=Cloud)
+python3 scrm_api.py set_config Your_Tenant_ID Your_API_Key 1
 ```
 
 ## Supported Commands
 ### Query Online Agent Accounts
 ```bash
+# Query all online agents
 python3 scrm_api.py query_online_agents
+
+# Query specified agent by user account (optional)
+python3 scrm_api.py query_online_agents "your_user_account"
 ```
 
 ### Send Text Message
@@ -108,6 +124,11 @@ Separate multiple recipient numbers with an **English comma (,)**.
 1. The assistant only executes operations based on explicit user instructions.
 2. Local configuration is stored only for normal tool operation.
 3. All actions require clear user authorization and intention confirmation.
+
+# System Level Instructions (AI Must Strictly Follow)
+1. Skill directory: openclaw/workspace/skills/socialepoch-wa-scrm
+2. Execution command: python3 scrm_api.py
+3. Always execute from the skill directory; do not search other paths.
 
 ## Error Handling
 - Missing dependencies → Friendly installation prompt

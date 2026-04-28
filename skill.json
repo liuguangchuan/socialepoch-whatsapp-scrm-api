@@ -1,22 +1,27 @@
 {
   "slug": "socialepoch-whatsapp-scrm",
   "name": "SocialEpoch - WhatsApp SCRM API",
-  "version": "2.1.3",
+  "version": "2.1.8",
   "author": "SocialEpoch",
-  "description": "Officially integrated with SocialEpoch WhatsApp SCRM OpenAPI. Support one-on-one & bulk messaging, including text, image, audio, document, video, business card, link card and diversion link. Built-in dependency management and automatic environment configuration for global customer service & overseas marketing scenarios.",
-  "category": "Marketing/Customer Service/Overseas/AI Tools",
+  "description": "SocialEpoch WhatsApp SCRM, Official WhatsApp API Integration for WhatsApp Business, WhatsApp Bulk Send, WhatsApp Multi-Account Management, WhatsApp Customer Service, WhatsApp Automation & Overseas Marketing. Support WhatsApp one-on-one chat & WhatsApp group messaging with text, image, audio, video, document, business card, link card and diversion link.",
+  "category": "WhatsApp / Marketing / Customer Service / Cross-border / AI Tools",
   "tags": [
-    "socialepoch",
-    "whatsapp",
+    "SocialEpoch",
+    "WhatsApp",
     "wa",
+    "ws",
     "scrm",
     "customer-management",
     "bulk-sending",
+    "bulk-messaging",
+    "multi-account",
     "message-push",
     "marketing",
     "customer-service",
     "overseas",
+    "cross-border",
     "global",
+    "automation",
     "link-card",
     "media-message"
   ],
@@ -36,6 +41,13 @@
       "secret": true,
       "placeholder": "Enter your SocialEpoch API Key"
     },
+    "SOCIALEPOCH_SOURCE": {
+      "type": "string",
+      "label": "Send Source (1=PC,2=Mobile,3=Cloud)",
+      "required": false,
+      "default": "1",
+      "placeholder": "1 (default)"
+    },
     "mediaTips": {
       "type": "string",
       "label": "Media Usage Instructions",
@@ -45,7 +57,19 @@
     }
   },
   "triggers": [
+    "WhatsApp",
+    "WhatsApp API",
+    "WhatsApp SCRM",
+    "WhatsApp bulk message",
+    "WhatsApp customer service",
+    "WhatsApp automation",
+    "whatsapp",
+    "SocialEpoch",
+    "socialepoch",
+    "wa message",
+    "ws service",
     "Query online accounts",
+    "Query online agent",
     "Send text message",
     "Send image",
     "Send audio",
@@ -61,13 +85,13 @@
     "Bulk document sending",
     "Bulk video sending",
     "Bulk link card sending",
-    "SocialEpoch",
-    "WhatsApp customer service",
-    "WhatsApp bulk message"
+    "WhatsApp bulk sending",
+    "Overseas customer marketing",
+    "Multi account message delivery"
   ],
   "metadata": {
     "requires": {
-      "config": ["SOCIALEPOCH_TENANT_ID", "SOCIALEPOCH_API_KEY"]
+      "config": ["SOCIALEPOCH_TENANT_ID", "SOCIALEPOCH_API_KEY", "SOCIALEPOCH_SOURCE"]
     }
   },
   "autoLoad": true,
