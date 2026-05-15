@@ -4,7 +4,8 @@ SocialEpoch WhatsApp SCRM open API, tailored for enterprise overseas marketing a
 
 Full coverage of WhatsApp account management, bulk sending,online agent query, customer operation, user profiling, chat record retrieval and Webhook callback. 
 
-Supports one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
+Supports **auto-receive messages**, **AI auto-reply**, one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
+
 ## Core Features
 ### ✅ Full Message Types
 Text / Image / Audio / Document / Video / Business Card / Card Link / Diversion Link
@@ -12,6 +13,9 @@ Text / Image / Audio / Document / Video / Business Card / Card Link / Diversion 
 ### ✅ SCRM Capabilities
 Online agent query, task creation, message status tracking, task progress query,
 custom diversion routing, marketing link push, bulk customer outreach.
+
+### ✅ Auto Message & AI Capabilities
+Auto message receiving, AI automatic reply, 24h uninterrupted service.
 
 ### ✅ Global Network
 Mainland & Indonesia dual-line switching, high-availability API scheduling, stable delivery.
@@ -63,6 +67,36 @@ Success message: **Config saved successfully**
 
 ---
 
+# 📡 Step 3: Auto Message Receiver Management
+Control message receiving service for auto-reply & 24h message monitoring.
+
+```bash
+# Start auto receive messages (lightweight)
+python3 scrm_api.py start_receive
+
+# Reset & upgrade receiver service
+python3 scrm_api.py reset_receive
+
+# Check receiver status
+python3 scrm_api.py check_receive
+```
+
+# 🎯 Open Dashboard (Control Panel)
+Quickly open your local web dashboard for full operational management:
+Inside the dashboard, you can:
+• View and reply to messages in real-time (two-way chat)
+• Manage contacts, profiles, and customer data
+• Configure AI auto-reply rules and smart responses
+• Handle manual fallback replies when AI has no answer
+• Monitor message status, logs, and agent performance
+• Full control over your WhatsApp SCRM system
+```bash
+# Open Local Dashboard & Management Console
+python3 scrm_api.py open_dashboard
+```
+
+---
+
 # 📌 Usage Rules
 1. All WhatsApp numbers must include country code
 2. For bulk sending: separate multiple numbers with **English comma**
@@ -78,6 +112,11 @@ Success message: **Config saved successfully**
 ## Basic Query
 1. Query online agent accounts
 2. Query online agent by user account: query_online_agents userName
+
+## Auto Receiver
+1. Start auto receive messages
+2. Reset receiver service
+3. Check receiver status
 
 ## Single Message
 1. Send text: senderNumber receiverNumber message content
@@ -106,6 +145,8 @@ Success message: **Config saved successfully**
 - Auto dependency installation
 - Full task lifecycle tracking
 - Stable single & bulk delivery
+- **Auto message receiving & AI auto-reply**
+- **Dual-mode receiver: lightweight & force reset**
 - Compatible with OpenClaw
 - Local configuration persistence
 - Secure & reliable execution

@@ -1,7 +1,7 @@
 ---
 name: socialepoch-whatsapp-scrm
-description: SocialEpoch WhatsApp SCRM open API, tailored for enterprise overseas marketing and customer service scenarios. Full coverage of WhatsApp account management, bulk sending,online agent query, customer operation, user profiling, chat record retrieval and Webhook callback. Supports one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
-version: 2.1.8
+description: SocialEpoch WhatsApp SCRM open API, tailored for enterprise overseas marketing and customer service scenarios. Full coverage of WhatsApp account management, bulk sending,online agent query, customer operation, user profiling, chat record retrieval and Webhook callback,enabling automatic message reception and AI-powered automatic replies. Supports one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
+version: 2.2.1
 author: SocialEpoch
 metadata:
   emoji: 📱
@@ -59,6 +59,24 @@ python3 scrm_api.py set_config Your_Tenant_ID Your_API_Key
 
 # Custom source (1=PC,2=Mobile,3=Cloud)
 python3 scrm_api.py set_config Your_Tenant_ID Your_API_Key 1
+```
+
+### Method 3: Auto Message Receiver Management
+```bash
+# Start auto message receiving (lightweight mode)
+python3 scrm_api.py start_receive
+
+# Reset receiver service (upgrade + repair configuration)
+python3 scrm_api.py reset_receive
+
+# Check receiver status
+python3 scrm_api.py check_receive
+```
+
+### Method 4: Open Dashboard
+```bash
+# Open Dashboard
+python3 scrm_api.py open_dashboard
 ```
 
 ## Supported Commands
