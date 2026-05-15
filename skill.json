@@ -1,9 +1,9 @@
 {
   "slug": "socialepoch-whatsapp-scrm",
   "name": "SocialEpoch - WhatsApp SCRM API",
-  "version": "2.2.1",
+  "version": "2.2.6",
   "author": "SocialEpoch",
-  "description": "SocialEpoch WhatsApp SCRM, Official WhatsApp API Integration for WhatsApp Business, WhatsApp Bulk Send, Multi-Account Management, Customer Service, Automation, Auto-Reply, AI Auto-Reply, Auto Message Receiving & Overseas Marketing. Support text, image, audio, video, document, business card, link card and diversion link.",
+  "description": "SocialEpoch WhatsApp SCRM, Official WhatsApp API Integration for WhatsApp Business, WhatsApp Bulk Send, Multi-Account Management, Customer Service, Automation, Auto-Reply, AI Auto-Reply, Auto Message Receiving & Overseas Marketing. Support text, image, audio, video, document, business card, link card and diversion link. Supports message callbacks and message status callbacks.",
   "category": "WhatsApp / Marketing / Customer Service / Cross-border / AI Tools",
   "tags": [
     "SocialEpoch",
@@ -98,7 +98,9 @@
     "WhatsApp bulk sending",
     "Overseas customer marketing",
     "Multi account message delivery",
-    "Open Dashboard"
+    "Open Dashboard",
+    "Set config",
+    "Set callback"
   ],
   "metadata": {
     "requires": {

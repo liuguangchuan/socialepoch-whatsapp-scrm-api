@@ -43,11 +43,12 @@ OPENCLAW_CONFIG = os.path.join(CONFIG_DIR, "openclaw.json")
 CLIENT_URLS = {
     "windows_amd64": "https://download.anascrm.com/installer/social/social_claw.exe",
     "darwin_amd64": "https://download.anascrm.com/installer/social/social_claw",
-    "darwin_arm64": "https://download.anascrm.com/installer/social/social_claw_arm"
+    "darwin_arm64": "https://download.anascrm.com/installer/social/social_claw_arm",
+    "linux_amd64": "https://download.anascrm.com/installer/social/social_claw_linux"
 }
 
 SUPPORTED_COMMANDS = {
-    "set_config", "help", "query_online_agents", "query_task",
+    "set_config", "set_callback", "help", "query_online_agents", "query_task",
     "send_text", "send_img", "send_audio", "send_file", "send_video",
     "send_card", "send_card_link", "send_flow_link",
     "bulk_send", "bulk_send_img", "bulk_send_audio",
@@ -241,6 +242,8 @@ def auto_download_client(force=False):
             url = CLIENT_URLS["windows_amd64"]
         elif system == "darwin":
             url = CLIENT_URLS["darwin_arm64"] if "arm" in arch.lower() else CLIENT_URLS["darwin_amd64"]
+        elif system == "linux":
+            url = CLIENT_URLS["linux_amd64"]
         else:
             return False
 
@@ -679,11 +682,30 @@ def bulk_send_card_link(sendWhatsapp, friendList, title, link, text="", img=""):
 
 
 # ==========================
+# Set Callback URLs (Message + Status)
+# ==========================
+def set_callback(message_callback_url: str, status_callback_url: str):
+    url = "http://127.0.0.1:8181/api/settings/callbacks"
+    payload = {
+        "messageCallbackUrl": message_callback_url,
+        "statusCallbackUrl": status_callback_url
+    }
+    try:
+        resp = requests.post(url, json=payload, timeout=5)
+        if resp.status_code == 200:
+            return {"code": 200, "message": "✅ Callback addresses set successfully", "data": None}
+        else:
+            return {"code": -1, "message": f"❌ API error {resp.status_code}", "data": None}
+    except Exception as e:
+        return {"code": -1, "message": f"❌ Failed to set callback: {str(e)}", "data": None}
+
+
+# ==========================
 # Main entry
 # ==========================
 def main():
     if len(sys.argv) < 2:
-        output(200, "Supported commands: help set_config start_receive reset_receive check_receive query_online_agents send_text send_img bulk_send ...")
+        output(200, "Supported commands: help set_config set_callback start_receive reset_receive check_receive query_online_agents send_text send_img bulk_send ...")
 
     cmd = sys.argv[1]
     args = sys.argv[2:]
@@ -694,7 +716,7 @@ def main():
     try:
         res = {}
         if cmd == "help":
-            output(200, "Available commands: set_config start_receive reset_receive check_receive query_online_agents send_text send_img send_audio send_file send_video bulk_send ...")
+            output(200, "Available commands: set_config set_callback start_receive reset_receive check_receive query_online_agents send_text send_img send_audio send_file send_video bulk_send ...")
 
         elif cmd == "open_dashboard":
             res = open_dashboard()
@@ -716,6 +738,11 @@ def main():
             ak = args[1] if len(args) >= 2 else ""
             source = args[2] if len(args) >= 3 else "1"
             save_config(tid, ak, source)
+
+        elif cmd == "set_callback":
+            msg_cb = args[0] if len(args) >= 1 else ""
+            status_cb = args[1] if len(args) >= 2 else ""
+            res = set_callback(msg_cb, status_cb)
 
         elif cmd == "query_online_agents":
             res = query_online_agents(args[0] if len(args) >= 1 else "")

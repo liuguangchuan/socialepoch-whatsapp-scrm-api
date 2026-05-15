@@ -94,7 +94,10 @@ Inside the dashboard, you can:
 # Open Local Dashboard & Management Console
 python3 scrm_api.py open_dashboard
 ```
-
+### Set Callback URLs (Message & Status)
+```bash
+python3 scrm_api.py set_callback "MessageCallbackUrl" "StatusCallbackUrl"
+```
 ---
 
 # 📌 Usage Rules

@@ -1,7 +1,7 @@
 ---
 name: socialepoch-whatsapp-scrm
-description: SocialEpoch WhatsApp SCRM open API, tailored for enterprise overseas marketing and customer service scenarios. Full coverage of WhatsApp account management, bulk sending,online agent query, customer operation, user profiling, chat record retrieval and Webhook callback,enabling automatic message reception and AI-powered automatic replies. Supports one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
-version: 2.2.1
+description: SocialEpoch WhatsApp SCRM open API, tailored for enterprise overseas marketing and customer service scenarios. Full coverage of WhatsApp account management, bulk sending,online agent query, customer operation, user profiling, chat record retrieval and Webhook callback,enabling automatic message reception and AI-powered automatic replies. Supports one-on-one & bulk sending for text, image, audio, video, document, business card, link card and diversion link,Supports message callbacks and message status callbacks. Built-in signature adaptation, automatic dependency management and zero-configuration deployment to empower overseas private domain and automated operation.
+version: 2.2.6
 author: SocialEpoch
 metadata:
   emoji: 📱
@@ -132,6 +132,11 @@ python3 scrm_api.py send_flow_link Sender_Number Recipient_Number "Title" "Diver
 ### Query Task Status
 ```bash
 python3 scrm_api.py query_task Task_ID
+```
+
+### Set Callback URLs (Message & Status)
+```bash
+python3 scrm_api.py set_callback "MessageCallbackUrl" "StatusCallbackUrl"
 ```
 
 ## Bulk Messaging
